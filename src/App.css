@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.App-header {
+  background-color: #026aa7;
+  width: 100%;
+  height: 32px;
+  padding: 0px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.todolist-container {
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  background-color: #DCDCDC;
+  width: 310px;
+}
+.todolist-title {
+  display: flex;
+  flex-direction: row;
+  margin-left: 8px;
+}
+.trello-container {
+  background-color: rgb(236, 252, 212);
+  border: 1px;
+  border-radius: 5px;
+  margin: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}  
+.trello-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start ;
+  align-items: center;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+.trello-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.openCreate {
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+}
+.openCreate:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.createForm {
+  background-color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 8px;
+}
+
+.inputTask {
+  border: none;
+  width: 95%;
+  margin: 8px;
+}
+.modifyTask {
+  background-color: rgb(236, 252, 212);
+  border: none;
+  width: 95%;
+  margin: 8px;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+}
