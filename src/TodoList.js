@@ -23,14 +23,12 @@ export default class TodoList extends Component {
     }
 
     taskSelectAll() {
-        console.log('-----------------------------???');
-        fetch('http://127.0.0.1:3001/todotasks', {method: 'GET'}).then(res => res.json())
+        fetch('http://localhost:3001/todotasks', {method: 'GET'})
+        .then(res => res.json())
         .then( data => {
             this.setState({ tasks : data });
-            console.log('-----------------------------');
-            console.log(this.state.tasks);
         })
-        .catch(err => {console.error('err!!!!', err);});
+        .catch(err => {console.error('err', err);});
     }
 
     taskDelete(id, dTask) {
