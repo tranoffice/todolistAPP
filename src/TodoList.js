@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Task from './models.js';
 import {default as UUID} from "node-uuid";
 import TrelloComponent from './Trello.js';
-import { getTodoTasks } from './apiCall.js';
 
 export default class TodoList extends Component {
     constructor(props) {
@@ -26,24 +25,59 @@ export default class TodoList extends Component {
         fetch('http://localhost:3001/todotasks', {method: 'GET'})
         .then(res => res.json())
         .then( data => {
-            this.setState({ tasks : data });
+            this.setState({ tasks : JSON.parse(data) });
         })
-        .catch(err => {console.error('err', err);});
+        .catch(err => {console.error('err!!!!', err);});
     }
 
     taskDelete(id, dTask) {
+
+        console.log('DELETE ID=' + id);
+        console.log(dTask);
+
+        fetch('http://localhost:3001/todotask/' + id, {
+            method: 'DELETE',
+        }).then(res => {
+            if ( res.status === 200 ){
+                return res.json();
+            } else {
+                var error = new Error(res.statusText);
+                error.response = res;
+                throw error;
+            }
+        } )
+        .catch(err => {console.error('err', err);});
+
+
         let lTasks = [...this.state.tasks];
         lTasks.splice(lTasks.indexOf(dTask), 1);
-        console.log(lTasks);
         this.setState({
             task: new Task(),
-            tasks: this.state.tasks.filter(el => el !== dTask)
+            tasks: [...this.state.tasks, lTasks]
         });
-                console.log(this.state.tasks);
     }
+
     taskUpdate(id, uTask) {
-        console.log('---Update Task-' + id);
-        console.log(uTask);
+        fetch('http://localhost:3001/todotask/' + id, {
+            method: 'post',
+            mode: 'cors',
+            body: JSON.stringify(uTask),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => {
+            if ( res.status === 200 ){
+                return res.json();
+            } else {
+                var error = new Error(res.statusText);
+                error.response = res;
+                throw error;
+            }
+        } )
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => {console.error('err', err);});
     }
 
     onChange = (event) => {
@@ -51,12 +85,34 @@ export default class TodoList extends Component {
     }
     
     onSubmit = (event) => {
-        event.preventDefault();
-        this.setState({
-            task: new Task(),
-            tasks: [...this.state.tasks, this.state.task]
-        });
+        const sendBody = JSON.stringify(this.state.task);
+        console.log(sendBody);
+        fetch('http://localhost:3001/todotasks', {
+            method: 'post',
+            mode: 'cors',
+            body: JSON.stringify(this.state.task),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => {
+            if ( res.status === 200 ){
+                return res.json();
+            } else {
+                var error = new Error(res.statusText);
+                error.response = res;
+                throw error;
+            }
+        } )
+        .then(data => {
+            console.log(data);
+            this.setState({
+                task: new Task(),
+                tasks: [...this.state.tasks, this.state.task]
+            })
+        })
+        .catch(err => {console.error('err', err);});
     }
+
     onCancel = (event) => {
         event.preventDefault();
         this.setState({
