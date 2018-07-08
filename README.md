@@ -1,10 +1,12 @@
 This project TodoList was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+L'api server is from todolistAPI project. ( https://github.com/tranoffice/todolistAPI.git )
 
 Screen design and process are inspired from Trello software :
 
 ![GitHub Logo](/TodoList.jpg)
 
-## Reste à faire : La fonction DELETE
+## TodoList process proposed : list tasks / create new task / update a task
+## Not available : delete
 
 
 Below you will find some information on how to perform common tasks.<br>
