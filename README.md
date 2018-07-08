@@ -1,6 +1,6 @@
 This project TodoList was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-
+![GitHub Logo](/TodoList.jpg)
 
 
 Below you will find some information on how to perform common tasks.<br>
