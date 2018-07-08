@@ -1,6 +1,10 @@
 This project TodoList was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+Screen design and process are inspired from Trello software :
+
 ![GitHub Logo](/TodoList.jpg)
+
+## Reste à faire : La fonction DELETE
 
 
 Below you will find some information on how to perform common tasks.<br>
